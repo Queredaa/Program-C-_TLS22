@@ -1,0 +1,85 @@
+// TUGAS PEMROGRAMAN TETI LAB SKILL 2022 //
+// MAHSA QUEREDA BAHJAH - TESLA //
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// menu function
+void menu() {
+  // menu
+  cout << endl
+       << "-------------------- ATM ONLINE ---------------------" << endl
+       << endl;
+
+  cout << "Selamat Datang di ATM Online!" << endl;
+  cout << "1. Lihat Saldo Anda" << endl;
+  cout << "2. Deposit Uang" << endl;
+  cout << "3. Tarik Uang" << endl;
+  cout << "4. Keluar" << endl;
+
+  cout << endl
+       << "-----------------------------------------------------" << endl
+       << endl;
+}
+
+// fungsi utama
+int main() {
+  double saldo = 0;
+  int choice;
+  do {
+    // call fungsi menu
+    menu();
+    cout << "Silakan dipilih: ";
+    // pengguna bisa milih menu yang ada ditampilan
+    cin >> choice;
+
+    // switch untuk milih
+    switch (choice) {
+    case 1:
+      // case 1 menunjukan total saldo
+      cout << "\nTotal Saldo: Rp" << saldo << endl;
+      break;
+
+    case 2:
+      // case 2 pengguna memasukkan uang ke ATM
+      cout << "\nJumlah yang disetor: Rp";
+      double depo;
+      cin >> depo;
+      // condition
+      if (depo > 0) {
+        cout << "\nSetor uang berhasil" << endl;
+        saldo += depo;
+        break;
+      } else {
+        cout << "\nSetor saldo gagal!!!" << endl;
+        break;
+      }
+
+    case 3:
+      // case 3 pengguna dapat menarik uang dari ATM
+      cout << "\nSaldo anda sisa: Rp" << saldo << endl;
+      cout << "\nJumlah yang ingin ditarik: Rp";
+      float tarik;
+      cin >> tarik;
+      // condition
+      if (tarik <=0) {
+        cout << "\nError!" << endl;
+        break;
+      }
+      if (tarik <= saldo) {
+        cout << "\nBerhasil menarik: Rp" << tarik << endl;
+        saldo -= tarik;
+        cout << "Saldo anda sisa: Rp" << saldo << endl;
+        break;
+        }
+      else {
+      cout << "Error, saldo anda kurang!\n" << endl;
+        break;
+      }
+    }
+  }
+  // jika memilih 4, maka sistem otomatis tertutup
+  while (choice != 4);
+  cout << "Terima kasih, selamat tinggal!" << endl << endl;
+}
